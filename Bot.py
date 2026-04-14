@@ -3,13 +3,13 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 import uuid
 import requests
 import asyncio
-
+import os
 # ================== CONFIG ==================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 BOT_USERNAME = os.getenv("BOT_USERNAME")
 ADMIN_ID = int(os.getenv("ADMIN_ID"))
 
-API_KEY = os.getenv"API_KEY"
+API_KEY = os.getenv("API_KEY")
 
 CHANNEL_LINK = "https://t.me/xahdgadhghjg"
 
