@@ -104,12 +104,6 @@ app.add_handler(MessageHandler(filters.PHOTO, handle_admin))
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
-# ===== BOT RUN THREAD =====
-def run_bot():
-    print("Bot Running 🚀")
-    app.run_polling()
-
-# ===== DUMMY SERVER =====
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -120,6 +114,9 @@ def run_server():
     server = HTTPServer(("0.0.0.0", 10000), Handler)
     server.serve_forever()
 
-# ===== RUN BOTH =====
-threading.Thread(target=run_bot).start()
-run_server()
+# server background me chalega
+threading.Thread(target=run_server).start()
+
+# bot main thread me chalega (IMPORTANT)
+print("Bot Running 🚀")
+app.run_polling()
