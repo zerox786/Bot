@@ -119,4 +119,7 @@ threading.Thread(target=run_server).start()
 
 # bot main thread me chalega (IMPORTANT)
 print("Bot Running 🚀")
+print("TOKEN:", BOT_TOKEN)
+print("USERNAME:", BOT_USERNAME)
+print("ADMIN:", ADMIN_ID)
 app.run_polling()
