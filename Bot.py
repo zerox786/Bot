@@ -118,8 +118,8 @@ def run_server():
 threading.Thread(target=run_server).start()
 
 # bot main thread me chalega (IMPORTANT)
-print("Bot Running 🚀")
-print("TOKEN:", BOT_TOKEN)
-print("USERNAME:", BOT_USERNAME)
-print("ADMIN:", ADMIN_ID)
-app.run_polling()
+try:
+    print("Bot Running 🚀")
+    app.run_polling()
+except Exception as e:
+    print("BOT ERROR:", e)
