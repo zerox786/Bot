@@ -103,6 +103,8 @@ app.add_handler(MessageHandler(filters.PHOTO, handle_admin))
 
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import os
+import time
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -115,17 +117,14 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
 def run_server():
-    server = HTTPServer(("0.0.0.0", 10000), Handler)
+    PORT = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(("0.0.0.0", PORT), Handler)
     server.serve_forever()
 
-# 🔥 server ko pehle start karo
 threading.Thread(target=run_server, daemon=True).start()
 
-# 🔥 thoda delay (important)
-import time
 time.sleep(2)
 
-# 🔥 bot start karo
 try:
     print("Bot Running 🚀")
     app.run_polling()
