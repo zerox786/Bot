@@ -110,14 +110,22 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"Bot is running")
 
+    def do_HEAD(self):
+        self.send_response(200)
+        self.end_headers()
+
 def run_server():
     server = HTTPServer(("0.0.0.0", 10000), Handler)
     server.serve_forever()
 
-# server background me chalega
-threading.Thread(target=run_server).start()
+# 🔥 server ko pehle start karo
+threading.Thread(target=run_server, daemon=True).start()
 
-# bot main thread me chalega (IMPORTANT)
+# 🔥 thoda delay (important)
+import time
+time.sleep(2)
+
+# 🔥 bot start karo
 try:
     print("Bot Running 🚀")
     app.run_polling()
